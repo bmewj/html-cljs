@@ -25,9 +25,9 @@ The inner workings of this app is rather simplistic. In order for everything to 
 
 ### Types
 
-Every HTML element related to Lisp code has a type, which is its class. The types are quite obvious for most forms; for example: lists are surrounded by a span element with type *list*; vectors are surrounded by a span element with type *vector*; etc...
+Every HTML element related to Lisp code has a type, which is its class. The types are quite obvious for most forms; for example: lists are surrounded by a ``<span class=list>``, vectors are surrounded by a ``<span class=vector>``, etc...
 
-While looking at the HTML structure you will also come across spans with the class insert. These are insertion points for Lisp forms, they surve the purpose of dropping forms in-between--or at the end of--a list or vector.
+While looking at the HTML structure you will also come across spans with the class ``insert``. These are insertion points for Lisp forms, they surve the purpose of dropping forms in-between--or at the end of--a list or vector.
 
 ```javascript
 Code.types.push(new Code.Type('list', ['form', 'collection']));
