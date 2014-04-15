@@ -1,0 +1,40 @@
+body {
+  padding: 0;
+  margin: 0;
+}
+
+body div {
+  float: left;
+  width: 400px;
+  padding: 5pt;
+}
+
+body div h2 {
+  font-family: "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+  font-weight: 200;
+  font-size: 14pt;
+  padding: 0;
+  margin: 0;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: default;
+}
+
+body div ul {
+  list-style: none;
+  padding: 5pt;
+  margin: 0;
+}
+
+body div ul li {
+  display: block;
+  padding: 2pt 0;
+  border-top: 1pt dashed #aaa;
+}
+
+body div ul li:last-child {
+  border-bottom: 1pt dashed #aaa;
+}

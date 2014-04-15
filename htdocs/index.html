@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Microlisp</title>
+        <link rel=stylesheet type=text/css href=styles.css>
+
+        <script type=text/javascript src=code/main.js></script>
+        <script type=text/javascript src=code/components/click_select.js></script>
+        <script type=text/javascript src=code/components/dblclick_edit.js></script>
+        <script type=text/javascript src=code/components/drag_and_drop.js></script>
+        <link rel=stylesheet type=text/css href=code/styles.css>
+
+        <script type=text/javascript src=scripts/main.js></script>
+    </head>
+
+    <body>
+        <div>
+            <h2>Code</h2>
+            <span class="code active"><span class=tag>Drop a form here.</span></span>
+        </div>
+        <div>
+            <h2>Custom Samples</h2>
+            <ul class=custom>
+                <li><span class=code><span class=tag>Drop a form here.</span></span></li>
+            </ul>
+        </div>
+        <div>
+            <h2>Standard Forms</h2>
+            <ul class=template>
+                <li><span class="code"><span class=list>(<span class=tag>list</span><span class=insert>)</span></span></span></li>
+                <li><span class="code"><span class=vector>[<span class=tag>vector</span><span class=insert>]</span></span></span></li>
+                <li><span class="code"><span class=quote>`<span class=tag>quote</span></span></span></li>
+                <li><span class="code"><span class=symbol>symbol</span></span></li>
+                <li><span class="code"><span class=key>:key</span></span></li>
+                <li><span class="code"><span class=number>123</span></span></li>
+                <li><span class="code"><span class=string>"string"</span></span></li>
+                <li><span class="code"><span class=tag>tag</span></span></li>
+            </ul>
+        </div>
+        <div>
+            <h2>Samples</h2>
+            <ul class=template>
+                <li>
+                    <span class="code"><span class=list>(<span class=symbol>first</span><span class=insert> </span><span class=tag>list</span><span class=insert>)</span></span></span><br>
+                    <i>Returns the first element of a given list.</i>
+                </li>
+                <li>
+                    <span class="code"><span class=list>(<span class=symbol>rest</span><span class=insert> </span><span class=tag>list</span><span class=insert>)</span></span></span><br>
+                    <i>Returns what remains of the list (after removing the first element).</i>
+                </li>
+                <li>
+                    <span class="code"><span class=list>(<span class=symbol>cons</span><span class=insert> </span><span class=tag>element</span><span class=insert> </span><span class=tag>list</span><span class=insert>)</span></span></span><br>
+                    <i>Returns a list with element concatenated to the front.</i>
+                </li>
+                <li>
+                    <span class="code"><span class=list>(<span class=symbol>eq</span><span class=insert> </span><span class=tag>a</span><span class=insert> </span><span class=tag>b</span><span class=insert>)</span></span></span><br>
+                    <i>Returns whether or not a and b are equal.</i>
+                </li>
+                <li>
+                    <span class="code"><span class=list>(<span class=symbol>typeof</span><span class=insert> </span><span class=tag>expr</span><span class=insert>)</span></span></span><br>
+                    <i>Returns the type of a given expression.</i>
+                </li>
+                <li>
+                    <span class="code"><span class=list>(<span class=symbol>cond</span><span class=insert> </span><span class=list>(<span class=tag>cond1</span><span class=insert> </span><span class=tag>expr1</span><span class=insert>)</span></span><span class=insert> </span><span class=list>(<span class=tag>cond2</span><span class=insert> </span><span class=tag>expr2</span><span class=insert>)</span></span><span class=insert>)</span></span></span><br>
+                    <i>Returns the expression for which the condition is non-nil.</i>
+                </li>
+                <li>
+                    <span class="code"><span class=list>(<span class=symbol>fn</span><span class=insert> </span><span class=vector>[<span class=tag>params</span><span class=insert>]</span></span><span class=insert> </span><span class=tag>function-body</span><span class=insert>)</span></span></span><br>
+                    <i>Returns a lambda function which takes params as symbols and executes its function body. The function body can consist of any number of expressions; the value of the last one will be returned.</i>
+                </li>
+                <li>
+                    <span class="code"><span class=list>(<span class=symbol>def</span><span class=insert> </span><span class=symbol>symbol</span><span class=insert> </span><span class=tag>expr</span><span class=insert>)</span></span></span><br>
+                    <i>Assigns the value of expr to a given symbol in the public scope. It then returns the value of expr.</i>
+                </li>
+            </ul>
+        </div>
+    </body>
+</html>

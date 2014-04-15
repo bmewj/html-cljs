@@ -1,0 +1,96 @@
+span.code {
+  font-family: "Courier", "Courier New", monospace, serif;
+  font-size: 11pt;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Source markup */
+
+span.code span.symbol,
+span.code span.symbol input.editor {
+  color: #6677cc;
+}
+
+span.code span.key,
+span.code span.key input.editor {
+  color: #cc6677;
+}
+
+span.code span.string,
+span.code span.string input.editor {
+  color: #bb0000;
+}
+
+span.code span.number,
+span.code span.number input.editor {
+  color: #003366;
+}
+
+span.code span.tag,
+span.code span.tag input.editor {
+  color: #aaaaaa;
+}
+
+span.code span.error {
+  font-family: "Helvetica", "Arial", sans-serif;
+  font-size: 8pt;
+  padding: 2pt;
+  color: #ffffff;
+  background-color: #bb6666;
+  border: 1pt solid #bb0000;
+  border-radius: 3pt;
+  cursor: default;
+}
+
+span.code span.key,
+span.code span.tag {
+  font-style: italic;
+}
+
+span.code span.list,
+span.code span.vector,
+span.code span.symbol,
+span.code span.key,
+span.code span.tag,
+span.code span.string,
+span.code span.number {
+  cursor: default;
+}
+
+/* Active markup */
+
+span.code span.drop,
+span.code span.selected,
+span.code span.selected input.editor {
+  background-color: #aaffcc;
+  border-radius: 2pt;
+}
+
+span.code span.drop {
+  background-color: #aaccff;
+  cursor: default;
+}
+
+span.code input.editor {
+  padding: 0;
+  margin: 0;
+  border: none !important;
+  border-color: transparent !important;
+  outline: none !important;
+  font-family: "Courier", "Courier New", monospace, serif;
+  font-size: 11pt;
+}
+
+span.code span.key input.editor,
+span.code span.tag input.editor {
+  font-style: italic;
+}
+
+[draggable] {
+  -khtml-user-drag: element;
+  -webkit-user-drag: element;
+}
