@@ -138,15 +138,6 @@
   };
 
   /* Register components */
-  var DragComponent = new Code.Component('dnd_drag', ['form'],
-    function(element, win, doc) {
-      registerDragElement(element, false);
-  });
-  var DropComponent = new Code.Component('dnd_drop', ['collection', 'element'],
-    function(element, win, doc) {
-      registerDropElement(element, false)
-  });
-
   var registerDragElement = function(element, dragAndCopy) {
     if (dragAndCopy)
       dragAndCopyElements.push(element);
@@ -172,6 +163,20 @@
     element.removeEventListener('drop', elementOnDrop);
     element.addEventListener('drop', elementOnDrop);
   };
+
+  var DragComponent = new Code.Component('dnd_drag', ['form'], {
+    'dragstart': elementOnDragStart,
+    'dragend': elementOnDragEnd
+  }, function(element, win, doc) {
+    element.draggable = true;
+  });
+
+  var DropComponent = new Code.Component('dnd_drop', ['collection', 'element'], {
+    'dragenter': elementOnDragEnter,
+    'dragover': elementOnDragOver,
+    'dragleave': elementOnDragLeave,
+    'drop': elementOnDrop
+  });
 
   Code.components.push(DragComponent);
   Code.components.push(DropComponent);

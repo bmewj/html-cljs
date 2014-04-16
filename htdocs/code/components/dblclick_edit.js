@@ -161,10 +161,8 @@
   };
 
   /* Register components */
-  var DblClickEditComponent = new Code.Component('dblclick_edit', ['symbol', 'key', 'string', 'tag', 'number'],
-    function(element, win, doc) {
-      element.removeEventListener('dblclick', elementOnDblClick);
-      element.addEventListener('dblclick', elementOnDblClick);
+  var DblClickEditComponent = new Code.Component('dblclick_edit', ['symbol', 'key', 'string', 'tag', 'number'], {
+    'dblclick': elementOnDblClick
   });
 
   Code.components.push(DblClickEditComponent);

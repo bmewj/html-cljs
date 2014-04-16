@@ -5,7 +5,7 @@ var Code = {};
 (function(){
 
   /* Element registration */
-  var elements = {};
+  var elementComponents = {};
 
   Code.load = function load(win) {
     var doc = win.document;
@@ -15,23 +15,6 @@ var Code = {};
     for (var i = 0; i < codeElements.length; i += 1)
       if (codeElements[i].tagName === 'SPAN')
         Code.registerElement(codeElements[i], win, doc);
-  };
-
-  Code.registerCodeElement = function(codeElement, win, doc) {
-    var components = [];
-    for (var i = 0; i < Code.components.length; i += 1) {
-      var componentTargets = Code.util.expandTypes(Code.components[i].targets);
-
-      if (componentTargets.indexOf('code') !== -1)
-        components.push(Code.components[i]);
-    }
-
-    for (var i = 0; i < codeElement.children.length; i += 1)
-      Code.registerElement(codeElement.children[i], win, doc);
-
-    for (var i = 0; i < components.length; i += 1)
-      if (typeof components[i].handler === 'function')
-        components[i].handler(codeElement, win, doc);
   };
 
   Code.registerElement = function(element, win, doc) {
@@ -51,9 +34,20 @@ var Code = {};
       for (var i = 0; i < element.children.length; i += 1)
         Code.registerElement(element.children[i], win, doc);
 
-      for (var i = 0; i < components.length; i += 1)
-        if (typeof components[i].handler === 'function')
-          components[i].handler(element, win, doc);
+      elementComponents[element] = components;
+      for (var i = 0; i < components.length; i += 1) {
+        var component = components[i];
+        var events = Object.keys(component.events);
+
+        for (var j = 0; j < events.length; j += 1) {
+          var eventName = events[j];
+          element.removeEventListener(eventName, component.events[eventName], false);
+          element.addEventListener(eventName, component.events[eventName], false);
+        }
+
+        if (typeof component.initialise === 'function')
+          component.initialise(element, win, doc);
+      }
     }
   };
 
@@ -124,11 +118,11 @@ var Code = {};
   /* Components */
   Code.components = [];
 
-  Code.Component = function Component(name, targets, handler) {
+  Code.Component = function Component(name, targets, events, initialise) {
     this.name = name || 'untitled';
-    this.handler = handler;
-
     this.targets = targets;
+    this.events = events;
+    this.initialise = initialise;
 
     return this;
   };
@@ -173,10 +167,7 @@ var Code = {};
     var win = element.ownerDocument.defaultView || element.ownerDocument.parentWindow;
     var doc = win.document;
 
-    if (element.classList.contains('code'))
-      Code.registerCodeElement(element, win, doc);
-    else
-      Code.registerElement(element, win, doc);
+    Code.registerElement(element, win, doc);
 
     if (!element.classList.contains('code') && element.parentElement !== null)
       Code.updated(element.parentElement);

@@ -41,16 +41,14 @@
   };
 
   /* Register components */
-  var clickSelectComponent1 = new Code.Component('click_select_1', ['code'],
+  var clickSelectComponent1 = new Code.Component('click_select_1', ['code'], {},
     function(codeElement, win, doc) {
       if (codeElements.indexOf(codeElement) === -1)
         codeElements.push(codeElement);
   });
 
-  var clickSelectComponent2 = new Code.Component('click_select_2', ['form'],
-    function(element, win, doc) {
-      element.removeEventListener('click', elementOnClick);
-      element.addEventListener('click', elementOnClick);
+  var clickSelectComponent2 = new Code.Component('click_select_2', ['form'], {
+    'click': elementOnClick
   });
 
   Code.components.push(clickSelectComponent1);
