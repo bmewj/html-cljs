@@ -1,6 +1,7 @@
 /* Click select enables focus to change */
 'use strict';
 
+
 (function() {
   var codeElements = [];
 
@@ -42,7 +43,7 @@
 
   /* Register components */
   var clickSelectComponent1 = new Code.Component('click_select_1', ['code'], {},
-    function(codeElement, win, doc) {
+    function(codeElement) {
       if (codeElements.indexOf(codeElement) === -1)
         codeElements.push(codeElement);
   });
@@ -50,9 +51,6 @@
   var clickSelectComponent2 = new Code.Component('click_select_2', ['form'], {
     'click': elementOnClick
   });
-
-  Code.components.push(clickSelectComponent1);
-  Code.components.push(clickSelectComponent2);
 
   /* Add event handling support */
   var selectionChangeEvent = new Code.EventObject('selection-change');

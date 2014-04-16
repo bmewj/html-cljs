@@ -1,4 +1,3 @@
-
 window.addEventListener('load', function() {
   Code.load(window);
 

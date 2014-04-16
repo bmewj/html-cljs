@@ -26,7 +26,7 @@
     var text = inputElement.value;
     element.appendChild(doc.createTextNode(text));
 
-    Code.updated(element);
+    Code.updateElement(element);
 
   };
 
@@ -164,8 +164,6 @@
   var DblClickEditComponent = new Code.Component('dblclick_edit', ['symbol', 'key', 'string', 'tag', 'number'], {
     'dblclick': elementOnDblClick
   });
-
-  Code.components.push(DblClickEditComponent);
 
   /* Input field size estimation */
   var getWidth = function(text) {

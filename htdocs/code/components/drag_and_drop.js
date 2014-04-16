@@ -126,12 +126,14 @@
         draggedElement = draggedElement.cloneNode(true);
 
       insertElement(draggedElement, this);
+
+      dropEvent.trigger(draggedElement, this);
+
+      if (!dropAndCopy)
+        Code.registerElement(draggedElement);
+
+      Code.updateElement(draggedElement);
     }
-
-    dropEvent.trigger(draggedElement, this);
-
-    if (!dropAndCopy)
-      Code.updated(draggedElement);
 
     draggedElement = null;
     e.stopPropagation();
@@ -142,32 +144,20 @@
     if (dragAndCopy)
       dragAndCopyElements.push(element);
 
-    element.draggable = true;
-
-    element.removeEventListener('dragstart', elementOnDragStart);
-    element.addEventListener('dragstart', elementOnDragStart);
-    element.removeEventListener('dragend', elementOnDragEnd);
-    element.addEventListener('dragend', elementOnDragEnd);
+    Code.attachComponent(element, 'dnd_drag');
   };
 
   var registerDropElement = function(element, dropAndCopy) {
     if (dropAndCopy)
       dropAndCopyElements.push(element);
 
-    element.removeEventListener('dragenter', elementOnDragEnter);
-    element.addEventListener('dragenter', elementOnDragEnter);
-    element.removeEventListener('dragover', elementOnDragOver);
-    element.addEventListener('dragover', elementOnDragOver);
-    element.removeEventListener('dragleave', elementOnDragLeave);
-    element.addEventListener('dragleave', elementOnDragLeave);
-    element.removeEventListener('drop', elementOnDrop);
-    element.addEventListener('drop', elementOnDrop);
+    Code.attachComponent(element, 'dnd_drop');
   };
 
   var DragComponent = new Code.Component('dnd_drag', ['form'], {
     'dragstart': elementOnDragStart,
     'dragend': elementOnDragEnd
-  }, function(element, win, doc) {
+  }, function(element) {
     element.draggable = true;
   });
 
@@ -177,9 +167,6 @@
     'dragleave': elementOnDragLeave,
     'drop': elementOnDrop
   });
-
-  Code.components.push(DragComponent);
-  Code.components.push(DropComponent);
 
   /* External Drag and Drop interface */
   Code.dragAndDrop = {
