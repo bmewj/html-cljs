@@ -53,4 +53,22 @@ window.addEventListener('load', function() {
       }
     }
   });
+
+  /* Evaluation */
+  var globals = {};
+  var input = document.getElementById('input');
+  var output = document.getElementById('output');
+  Code.addEventListener('update', function(element) {
+    if (element !== input)
+      return;
+
+    while (output.firstChild !== null)
+      output.removeChild(output.firstChild);
+
+    var result = Code.evaluator.evaluate(element.firstChild, globals, {});
+    Code.attachComponent(result, 'click_select_2');
+    Code.attachComponent(result, 'dnd_drag');
+
+    output.appendChild(result);
+  });
 });

@@ -31,16 +31,16 @@ var Code = {};
     }
   };
 
-  Code.updateElement = function(element) {
+  Code.updateElement = function(element, stopBubbling) {
     updateEvent.trigger(element);
 
     if (!Code.util.isElement(element)) {
       for (var i = 0; i < element.children.length; i += 1)
-        Code.updateElement(element.children[i]);
+        Code.updateElement(element.children[i], true);
 
     } else {
       for (var i = 0; i < element.children.length; i += 1)
-        Code.updateElement(element.children[i]);
+        Code.updateElement(element.children[i], true);
 
       var componentNames = Code.util.getElementComponents(element);
       for (var i = 0; i < componentNames.length; i += 1) {
@@ -48,6 +48,18 @@ var Code = {};
         Code.attachComponent(element, componentName);
       }
     }
+
+    if (stopBubbling)
+      return;
+
+    element = element.parentElement;
+    while (element !== null && !element.classList.contains('code')) {
+      updateEvent.trigger(element);
+      element = element.parentElement;
+    }
+
+    if (element !== null)
+      updateEvent.trigger(element);
   };
 
   Code.attachComponent = function(element, componentName) {
@@ -122,6 +134,8 @@ var Code = {};
 
   Code.types.push(new Code.Type('tag', ['form', 'element', 'atom']));
   Code.types.push(new Code.Type('error', ['form', 'element', 'atom']));
+  Code.types.push(new Code.Type('native', ['form', 'element', 'atom']));
+
   Code.types.push(new Code.Type('insert', 'element'));
 
   Code.util = {
@@ -145,6 +159,13 @@ var Code = {};
         expandedTypes = expandedTypes.concat(Code.util.expandType(types[i]));
 
       return expandedTypes;
+    },
+    getTypeInformation: function(type) {
+      for (var i = 0; i < Code.types.length; i += 1)
+        if (Code.types[i].name === type)
+          return Code.types[i];
+
+      return null;
     },
     isElement: function(element) {
       if (element.tagName !== 'SPAN')
