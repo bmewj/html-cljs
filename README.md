@@ -59,6 +59,6 @@ Another example would be the drag-and-drop feature. With drag-and-drop elements 
 ## To-do
 
 - [ ] Implement text-to-HTML parser.
-- [ ] Implement a basic evaluator.
+- [x] Implement a basic evaluator.
 - [ ] Add support for more Clojure data structures.
   
