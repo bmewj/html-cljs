@@ -54,6 +54,8 @@ Components are the interfaces used to add special behaviours to HTML Lisp struct
 
 An example of a special behaviour is the *click-to-select* feature. Whenever you click on a piece of code, it will highlight the form. This behaviour is defined in ``htdocs/code/components/click_select.js``. This behaviour acts on all types in the group ``form``. This is done by means of a Component object (defined in the click-to-select JS file) which binds to all ``form`` elements.
 
+Another example would be the drag-and-drop feature. With drag-and-drop elements can be moved around within the Code window. Furthermore, elements can be dragged from template lists like the Standard Forms and Samples window. The way this feature works is that it defines two components: ``dnd_drag`` and ``dnd_drop``. The ``dnd_drag`` component binds to all types in the group ``form`` whilst the ``dnd_drop`` component binds to all types in the group ``element``; forms can be dragged and dropped on to other forms or insertion points.
+
 ## To-do
 
 - [ ] Implement text-to-HTML parser.
