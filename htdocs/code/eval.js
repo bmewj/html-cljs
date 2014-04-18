@@ -95,8 +95,8 @@
 
       var symbol = element.firstChild.nodeValue;
 
-      if (symbol === 'js')
-        return Code.evaluator.createNative(doc, 'js');
+      if (symbol === 'native')
+        return Code.evaluator.createNative(doc, 'native');
 
       else if (symbol === 'NIL')
         return element;
@@ -136,7 +136,7 @@
     return this;
   };
 
-  new Code.evaluator.NativeMacro('js', function(doc, args) {
+  new Code.evaluator.NativeMacro('native', function(doc, args) {
     if (args.length !== 1)
       return Code.evaluator.createError(doc, 'Wrong amount of arguments passed to js');
 
