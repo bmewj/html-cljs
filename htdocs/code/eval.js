@@ -56,7 +56,7 @@
 
 
         default:
-          return Code.evaluator.createError(doc, 'Cannot evaluate list with first element:' + Code.util.getElementType(operator));
+          return Code.evaluator.createError(doc, 'Cannot evaluate list with first element: ' + Code.util.getElementType(operator));
       }
     },
     'vector': function(element, locals, globals) {
