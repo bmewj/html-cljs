@@ -48,7 +48,7 @@
       editor.inputElement = inputElement;
     }
 
-    var text = element.innerText;
+    var text = element.innerText || element.textContent;
     while (element.hasChildNodes())
       element.removeChild(element.lastChild);
 
