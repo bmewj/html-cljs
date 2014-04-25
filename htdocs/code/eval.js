@@ -33,7 +33,7 @@
   };
 
   Code.evaluator.valueToElement = function valueToElement(value) {
-
+    return null;
   };
 
 })();
