@@ -11,6 +11,7 @@ Currently, the Lisp language supported is not an actual standard, though I'm wor
 
 - Lists
 - Vectors
+- Maps
 - Symbols
 - Keys
 - Numbers (integers, no support for decimals)
@@ -30,6 +31,7 @@ While looking at the HTML structure you will also come across spans with the cla
 ```javascript
 Code.types.push(new Code.Type('list', ['form', 'collection']));
 Code.types.push(new Code.Type('vector', ['form', 'collection']));
+Code.types.push(new Code.Type('map', ['form', 'collection']));
 
 Code.types.push(new Code.Type('quote', ['form', 'element']));
 Code.types.push(new Code.Type('symbol', ['form', 'element']));
@@ -54,8 +56,7 @@ An example of a special behaviour is the *click-to-select* feature. Whenever you
 
 Another example would be the drag-and-drop feature. With drag-and-drop elements can be moved around within the Code window. Furthermore, elements can be dragged from template lists like the Standard Forms and Samples window. The way this feature works is that it defines two components: ``dnd_drag`` and ``dnd_drop``. The ``dnd_drag`` component binds to all types in the group ``form`` whilst the ``dnd_drop`` component binds to all types in the group ``element``; forms can be dragged and dropped on to other forms or insertion points.
 
-## To-do
+### To-do
 
-- [ ] Implement text-to-HTML parser.
-- [ ] Incorporate ClojureScript REPL.
-  
+- [ ] Create Text-to-HTML Script
+- [ ] Create HTML-to-Text Script
