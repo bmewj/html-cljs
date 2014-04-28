@@ -125,6 +125,7 @@ var Code = {};
 
   Code.types.push(new Code.Type('list', ['form', 'collection']));
   Code.types.push(new Code.Type('vector', ['form', 'collection']));
+  Code.types.push(new Code.Type('map', ['form', 'collection']));
 
   Code.types.push(new Code.Type('function', ['form', 'collection', 'atom']));
   Code.types.push(new Code.Type('macro', ['form', 'collection', 'atom']));

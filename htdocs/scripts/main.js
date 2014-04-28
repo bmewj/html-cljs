@@ -55,7 +55,7 @@ window.addEventListener('load', function() {
   });
 
   /* Evaluation */
-  var globals = {};
+  /*var globals = {};
   var input = document.getElementById('input');
   var output = document.getElementById('output');
   Code.addEventListener('update', function(element) {
@@ -70,5 +70,5 @@ window.addEventListener('load', function() {
     Code.attachComponent(result, 'dnd_drag');
 
     output.appendChild(result);
-  });
+  });*/
 });
