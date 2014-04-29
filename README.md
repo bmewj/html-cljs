@@ -1,15 +1,9 @@
 html-cljs
 =========
 
-A very simple ClojureScript code creator in which all the Lisp data structures are HTML. The drag and drop feature enables for very quick creation of s-expressions (but not AS fast as just typing the code).
-
-The idea behind this project is that all the data of the program should be expressed as HTML. This means that all data can be visualised and printed on a webpage.
+A very simple [ClojureScript](https://github.com/kanaka/clojurescript) structural editor in which all the Lisp data structures are HTML. The drag and drop feature enables for interactive creation of s-expressions, building up a program as you go along.
 
 To understand how html-cljs works you can watch [this](http://www.youtube.com/watch?v=0AcMRKsZvMM) demo.
-
-## The language
-
-Currently, the supported language is [ClojureScript](https://github.com/kanaka/clojurescript).
 
 ## Documentation
 
