@@ -256,4 +256,19 @@ var Code = {};
   /* Element updating system */
   var updateEvent = new Code.EventObject('update');
 
+  /* Element to Text */
+  Code.convertToText = function convertToText(element) {
+    if (!Code.util.isElement(element))
+      return element.innerHTML || element.textContent || element.value;
+
+    var child = element.firstChild,
+        text = [];
+    while (child !== null) {
+      text.push(Code.convertToText(child));
+      child = child.nextSibling;
+    }
+
+    return text.join('');
+  };
+
 })();
