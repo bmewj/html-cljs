@@ -46,4 +46,4 @@ Another example would be the drag-and-drop feature. With drag-and-drop elements 
 ### To-do
 
 - [ ] Create Text-to-HTML Script
-- [ ] Create HTML-to-Text Script
+- [x] Create HTML-to-Text Script
