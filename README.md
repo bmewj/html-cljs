@@ -5,28 +5,21 @@ A very simple ClojureScript code creator in which all the Lisp data structures a
 
 The idea behind this project is that all the data of the program should be expressed as HTML. This means that all data can be visualised and printed on a webpage.
 
+To understand how html-cljs works you can watch [this](http://www.youtube.com/watch?v=0AcMRKsZvMM) demo.
+
 ## The language
 
-Currently, the Lisp language supported is not an actual standard, though I'm working towards fully integrating [ClojureScript](https://github.com/kanaka/clojurescript). At this point in time the following forms are supported:
-
-- Lists
-- Vectors
-- Maps
-- Symbols
-- Keys
-- Numbers (integers, no support for decimals)
-- Strings
-- Tags (Used to annotate expressions)
+Currently, the supported language is [ClojureScript](https://github.com/kanaka/clojurescript).
 
 ## Documentation
 
-The inner workings of this app is rather simplistic. In order for everything to be extensible, the HTML elements do not rely heavily on Javascript. Rather, the Javascript side of things only *adds* behaviour; the ClojureScript code can be printed exactly as it would be without any of the JS code running.
+The inner workings of this project are rather simple. In order for everything to be extensible, the HTML elements do not rely heavily on Javascript. Rather, the Javascript side of things only *adds* behaviour; the ClojureScript code can be printed exactly as it would be without any of the JS code running.
 
 ### Types
 
 Every HTML element related to ClojureScript code has a type, which is its class. The types are quite obvious for most forms; for example: lists are surrounded by a ``<span class=list>``, vectors are surrounded by a ``<span class=vector>``, etc...
 
-While looking at the HTML structure you will also come across spans with the class ``insert``. These are insertion points for Lisp forms, they surve the purpose of dropping forms in-between--or at the end of--a list or vector.
+While looking at the HTML structure you will also come across spans with the class ``insert``. These are insertion points for Lisp forms, they serve the purpose of dropping forms in-between--or at the end of--a list, vector, or map.
 
 ```javascript
 Code.types.push(new Code.Type('list', ['form', 'collection']));
