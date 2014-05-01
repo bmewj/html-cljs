@@ -175,11 +175,7 @@ var Code = {};
       if (element.tagName !== 'SPAN')
         return false;
 
-      for (var i = 0; i < Code.types.length; i += 1)
-        if (element.classList.contains(Code.types[i].name))
-          return true;
-
-      return false;
+      return (Code.util.getElementType(element) !== undefined);
     },
     getElementType: function(element) {
       for (var i = 0; i < Code.types.length; i += 1)
