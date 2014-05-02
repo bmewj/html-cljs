@@ -1,8 +1,7 @@
 /* Click select enables focus to change */
-'use strict';
-
-
 (function() {
+  'use strict';
+
   var codeElements = [];
 
   var selectedElement = null;

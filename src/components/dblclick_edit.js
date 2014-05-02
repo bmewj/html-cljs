@@ -1,7 +1,7 @@
 /* Double-click edit allows you to edit symbols, keys, strings, numbers, and tags */
-'use strict';
-
 (function() {
+  'use strict';
+
   var editor = {
     codeElement: null,
     element: null,

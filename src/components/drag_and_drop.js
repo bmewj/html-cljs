@@ -1,7 +1,7 @@
 /* Allows forms to be dragged around */
-'use strict';
-
 (function() {
+  'use strict';
+
   var draggedElement = null;
 
   var dragAndCopyElements = [];
