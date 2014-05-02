@@ -6,25 +6,25 @@
 
   var selectedElement = null;
 
-  var deselectAll = function() {
+  var deselectAll = function deselectAll() {
     for (var i = 0; i < codeElements.length; i += 1)
       deselect(codeElements[i]);
   };
 
-  var deselect = function(codeElement) {
+  var deselect = function deselect(codeElement) {
     var selectedElements = codeElement.getElementsByClassName('selected');
     if (selectedElements.length === 1)
       selectedElements[0].classList.remove('selected');
   };
 
-  var deselectElement = function(element) {
+  var deselectElement = function deselectElement(element) {
     if (element.classList.contains('selected'))
       element.classList.remove('selected');
     else
       deselect(element);
   };
 
-  var selectElement = function(element) {
+  var selectElement = function selectElement(element) {
     if (element === selectedElement)
       return;
 
@@ -35,7 +35,7 @@
     selectionChangeEvent.trigger(this);
   };
 
-  var elementOnClick = function(e) {
+  var elementOnClick = function elementOnClick(e) {
     selectElement(this);
     e.stopPropagation();
   };
@@ -62,7 +62,7 @@
 
   /* Updating support */
   Code.addEventListener('update', function(element) {
-    if (element.classList.contains('code'))
+    if (Code.util.getElementType(element) === 'code')
       deselectAll();
   });
 })();
